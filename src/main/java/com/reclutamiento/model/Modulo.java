@@ -12,9 +12,6 @@ import lombok.Data;
 @Data
 public class Modulo {
 	@Id
-	@Column
-	private Integer idModulo;
-	
-	@Column
+	private int id_Modulo;
 	private String descrip;
 }

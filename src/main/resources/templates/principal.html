@@ -7,5 +7,11 @@
 </head>
 <body>
 	<h1>Funciona</h1>
+	<div th:each="u: ${usuario}">
+	<p th:text="'Bienvenido: ' + ${u.nombre}"></p>
+	<p th:each="r: ${rol}" 
+	   th:if="${r.id_Rol}==${u.id_Rol}"
+	   th:text="'Rol: ' + ${r.descrip}"></p>
+	</div>
 </body>
 </html>

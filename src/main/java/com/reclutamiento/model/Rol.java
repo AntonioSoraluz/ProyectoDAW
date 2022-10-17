@@ -12,9 +12,6 @@ import lombok.Data;
 @Data
 public class Rol {
 	@Id
-	@Column(name = "idRol")
-	private Integer idRol;
-	
-	@Column(name = "descrip")
+	private int id_Rol;
 	private String descrip;
 }

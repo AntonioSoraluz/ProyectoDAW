@@ -6,10 +6,9 @@ import javax.persistence.Embeddable;
 
 import lombok.Data;
 
-@Embeddable
+/*@Embeddable*/
 @Data
-public class RolOperacionPK implements Serializable{
-	private static final long serialVersionUID = 1L;
-	private Integer idRol;
-	private Integer idOperacion;
+public class RolOperacionPK{
+	private int idRol;
+	private int idOperacion;
 }
