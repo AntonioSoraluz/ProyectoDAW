@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.reclutamiento.model.Rol;
+import com.reclutamiento.model.UnidadOrganica;
 import com.reclutamiento.model.Usuario;
 import com.reclutamiento.model.repository.RolRepository;
+import com.reclutamiento.model.repository.UnidadOrgRepository;
 import com.reclutamiento.model.repository.UsuarioRepository;
 
 @Controller
@@ -18,6 +20,8 @@ public class LoginController {
 	private UsuarioRepository uRepo;
 	@Autowired
 	private RolRepository rRepo;
+	@Autowired
+	private UnidadOrgRepository uoRepo;
 	
 	@GetMapping("/CargaLogin")
 	public String cargarLogin(Model model) {
@@ -35,6 +39,7 @@ public class LoginController {
 		}else {
 			model.addAttribute("usuario", u);
 			model.addAttribute("rol", rRepo.findAll());
+			model.addAttribute("unidadorganica", uoRepo.findAll());
 			return "principal";
 		}		
 	}

@@ -1,0 +1,20 @@
+<div class="menu_lateral__container" th:fragment="menu"
+	th:each="u: ${usuario}">
+	<div class="menu_lateral__info_usuario">
+		<div class="menu_lateral__img_usuario text-center">
+			<img src="resources/img/user.png" alt="" />
+			<p class="menu_lateral__nombre_usuario" th:text="${u.nombre}"></p>
+		</div>
+		<div class="menu_lateral__datos_usuario text-center">
+			<h6>CARGO</h6>
+			<p th:each="r: ${rol}" th:if="${r.id_Rol}==${u.id_Rol}"
+				th:text="${r.descrip}"></p>
+			<h6>UNIDAD ORGANICA</h6>
+			<p th:each="uo: ${unidadorganica}" th:if="${uo.id_uo}==${u.id_uo}"
+				th:text="${uo.nom_uo}"></p>
+		</div>
+	</div>
+	<div class="menu_lateral__modulos">
+		<div class="menu_lateral__modulo" th:each="uo: ${unidadorganica}" th:text="${uo.nom_uo}"></div>
+	</div>
+</div>
