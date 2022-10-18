@@ -14,16 +14,7 @@ import lombok.Data;
 @Data
 public class Operacion {
 	@Id
-	@Column(name = "idOperacion")
-	private Integer idOperacion;
-	
-	@Column(name = "acceso")
+	private int id_Operacion;
 	private String acceso;
-	
-	@Column(name = "idModulo")
-	private Integer idModulo;
-	
-	@ManyToOne
-	@JoinColumn(name = "idModulo", nullable = false, insertable=false, updatable=false)
-	private Modulo modulo;
+	private int id_Modulo;
 }

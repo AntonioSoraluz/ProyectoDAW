@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+/*LAYAOUT DEL PRINCUPAL*/
+body{
+	display: grid;
+	min-height: 100vh;
+	grid-template-rows: 3em 1fr;
+	grid-template-columns: 300px 1fr;
+}
+.menu_lateral__container{
+	background: #2A77EA;
+	grid-row: 1 / span 3;
+	grid-column: 1;
+	padding: 2em 0 2em 0;
+}
+.encabezado{
+	background: #EA1C24; 
+	grid-row: 1;
+	grid-column: 2;
+}
+.contenido{
+	grid-row: 2;
+	padding: 2em;
+}
+/*Menu lateral*/
+.menu_lateral__img_usuario > img{
+	width: 45%;
+}
+.menu_lateral__nombre_usuario{
+	width: 150px;
+	margin: auto;
+	color: white;
+}
+.menu_lateral__datos_usuario{
+	padding-top: 1em;
+	color: white;
+}
+.menu_lateral__modulo{
+	background: #1256A7;
+	padding: 15px 0 15px 30px;
+	color: white;
+	font-size: 14pt
+} 

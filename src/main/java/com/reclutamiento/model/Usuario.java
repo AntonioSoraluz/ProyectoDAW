@@ -14,26 +14,11 @@ import lombok.Data;
 @Data
 public class Usuario {
 	@Id
-	@Column(name = "idUser")
-	private Integer idUser; 
-	
-	@Column(name = "nombre")
-	private String nombre; 
-	
-	@Column(name = "email")
-	private String email; 
-	
-	@Column(name = "password")
+	private int id_User;
+	private String nombre;
+	private String email;
 	private String password;
-	
-	@Column(name = "fecha")
 	private String fecha;
-	
-	@Column(name = "idRol")
-	private Integer idRol;
-	
-	@ManyToOne
-	@JoinColumn(name = "idRol", nullable = false, insertable=false, updatable=false)
-	private Rol rol;
-
+	private int id_Rol;
+	private int id_uo;
 }

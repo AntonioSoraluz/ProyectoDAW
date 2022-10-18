@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Login</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{resources/css/general.css}" />
+<div th:replace="librerias::librerias" th:remove="tag"></div>
 </head>
-<body>
-	<div class="col-sm-6 col-sm-offset-3">
-		<div class="form-top">
-			<div class="form-top-left">
-				<h1>Iniciar Sesion</h1>
-				<p>Ingrese su usuario y contrase�a</p>
+<body style="height: 100vh">
+	<div
+		class="container-fluid bg-danger p-2 d-flex justify-content-center">
+		<h4 class="text-cemter text-white">Año del Fortalecimiento de la
+			Soberanía Nacional</h4>
+	</div>
+	<div class="container-fluid d-flex align-items-center"
+		style="height: calc(100vh - 101px)">
+		<!-- Login de bootstrap -->
+		<div class="card mb-10 mx-auto border-0"
+			style="max-width: 650px; height: auto">
+			<div class="row g-0">
+				<div class="login-left col-md-6 border color-login rounded">
+					<div class="card-body mt-5">
+						<form th:action="@{/validar}" method="post" th:object="${usuario}"
+							class="d-flex flex-column">
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="card-text">Email</label>
+								<input th:field="*{email}" required type="email"
+									class="form-control" id="exampleInputEmail1"
+									aria-describedby="emailHelp" placeholder="Ingrese su email">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Contraseña</label> <input
+									th:field="*{password}" class="form-control" required
+									type="password" id="exampleInputPassword1"
+									placeholder="Contraseña">
+							</div>
+
+							<button type="submit" class="btn btn-danger p-2">ENTRAR</button>
+						</form>
+
+					</div>
+				</div>
+				<div class="col-md-6 p-0">
+					<img src="resources/img/login.jpg" alt=""
+						style="width: 280px; height: 340px">
+				</div>
+			</div>
+			<div th:if="${mensaje}" th:text="${mensaje}" class="alert alert-warning alert-dismissible fade show" role="alert">
+
 			</div>
 		</div>
-		<div class="form-bottom">
-			<form th:action="@{/validar}" method="post" th:object="${usuario}">
-				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input th:field="*{email}" required type="email" class="form-control" 
-					id="exampleInputEmail1" aria-describedby="emailHelp" 
-					placeholder="Ingrese su email">
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1">Password</label>
-				    <input th:field="*{password}" class="form-control" 
-				    required type="password" id="exampleInputPassword1" placeholder="Contrase�a">
-				  </div>
-				  <button type="submit" class="btn btn-primary">Ingresar</button>
-			</form>
-			<br>
-			<div th:if="${mensaje}" th:text="${mensaje}" class="alert alert-danger" role="alert"></div>
-		</div>
 	</div>
+	<div class="container-fluid bg-dark p-4"></div>
 </body>
 </html>
