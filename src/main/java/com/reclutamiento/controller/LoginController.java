@@ -23,13 +23,13 @@ public class LoginController {
 	@Autowired
 	private UnidadOrgRepository uoRepo;
 	
-	@GetMapping("/CargaLogin")
+	@GetMapping("/login")
 	public String cargarLogin(Model model) {
 		model.addAttribute("usuario", new Usuario());
 		return "login";
 	}
 	Usuario u;
-	@PostMapping("/validar")
+	@PostMapping("/home")
 	public String validarUsu(@ModelAttribute Usuario usuario, Model model) {		
 		u = uRepo.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword());
 		if (u==null) {
