@@ -12,7 +12,7 @@
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">PERFIL DE PUESTO</h5>
@@ -21,43 +21,149 @@
 					<form id="idRegistrar" method="post"
 						action="ServletTrabajador?tipo=REGISTRAR" data-toggle="validator"
 						role="form">
-						<div class="form-group">
-							<label for="exampleInputEmail1" class="form-label">Codigo</label>
-							<input type="text" class="form-control" name="codigo"
-								id="idCodigo" readonly value="0">
+						<fieldset class="form-group border p-3">
+						<legend class="col-form-label col-sm-2 pt-0">Encabezado</legend>
+						<div class="form-row">
+							<div class="col">
+								<div class="form-row">
+								    	<label for="exampleFormControlInput1">Clave de Puesto:</label>
+								    <div class="col">
+								    	<input type="text" class="form-control"  placeholder="Clave...">
+								    </div>
+							    </div>
+						    </div>
+						    <div class="col">
+						        <div class="form-row">
+								    	<label for="exampleFormControlInput2">Fecha de elaboración:</label>
+								    <div class="col">
+								    	<input type="date" class="form-control"  placeholder="Fecha...">
+								    </div>
+							    </div>
+						    </div>
 						</div>
-						<div class="form-group">
-							<label for="exampleInputEmail1" class="form-label">Atributo</label> <input
-								type="text" class="form-control" name="dni" id="idDNI">
+						<br>
+						<div class="form-row">
+							<div class="col">
+								<div class="form-row">
+									 	<label for="exampleFormControlInput3">Puesto:</label>
+									 <div class="col">
+									 	<input type="text" class="form-control"  placeholder="Nombre del puesto...">
+									 </div>
+								</div>
+							</div>
+							<div class="col">
+								 <div class="form-row">
+									 	<label for="exampleFormControlSelect1">Unidad Organica:</label>
+									 <div class="col">
+										 <select class="form-control">
+										 	<option>1</option>
+										    <option>2</option>
+										    <option>3</option>
+										    <option>4</option>
+										    <option>5</option>
+										 </select>
+									 </div>
+								 </div>
+							</div>
 						</div>
+						<br>
 						<div class="form-group">
-							<label for="exampleInputPassword1" class="form-label">Atributo
-							</label> <input type="text" class="form-control"
-								name="nombrecom" id="idNombreCom">
+							<div class="form-row">
+							    <label for="exampleFormControlInput4">Responde a:</label>
+								<div class="col">
+									<input type="text" class="form-control"  placeholder="Nombre...">
+								</div>
+								<div>
+									<div class="col">
+							        <div class="form-row">
+									    	<label for="exampleFormControlInput8">Turno de trabajo:</label>
+									    <div class="col">
+									    	<input type="text" class="form-control"  placeholder="Turno...">
+									    </div>
+								    </div>
+							    </div>
+								</div>
+						     </div>
 						</div>
+						</fieldset>
+						<br>
 						<div class="form-group">
-							<label for="exampleInputPassword1" class="form-label">Atributo</label>
-							<select class="form-control" name="sexo" id="idSexo">
-								<option value="">Seleccione algo</option>
-								<option value="value">item</option>
-								<option value="value">item</option>
-							</select>
+							    <label for="exampleFormControlTextarea1">Descripción del Puesto:</label>
+								<div class="col">
+									<textarea class="form-control" rows="3" 
+									placeholder="Descripción..."></textarea>
+								</div>
+						     </div>
+						<br>
+						<div class="form-row">
+							<fieldset class="form-group border p-3">
+								<legend class="col-form-label col-sm-2 pt-0">Estudios</legend>
+								<div class="form-row">
+									<div class="col">
+									    <div class="form-row">
+										    <div class="col">
+									    		<label for="exampleFormControlInput5">Educ. Media completa (secundaria)</label>
+											</div>
+											<div class="col">
+												<div class="form-check form-check-inline">
+												  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+												  <label class="form-check-label" for="inlineRadio1">Si</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+									    <div class="form-row">
+										    <div class="col">
+									    		<label for="exampleFormControlInput6">Educ. Técnico-Profesional (técnico medio o superior)</label>
+											</div>
+											<div class="col">
+												<div class="form-check form-check-inline">
+												  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+												  <label class="form-check-label" for="inlineRadio1">Si</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+									    <div class="form-row">
+										    <div class="col">
+									    		<label for="exampleFormControlInput7">Educ. Universitaria</label>
+											</div>
+											<div class="col">
+												<div class="form-check form-check-inline">
+												  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+												  <label class="form-check-label" for="inlineRadio1">Si</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									
+								</div>
+							</fieldset>
 						</div>
+						<br>
+						<fieldset class="form-group border p-3">
+						<legend class="col-form-label col-sm-2 pt-0">Edad</legend>
 						<div class="form-group">
-							<label for="exampleInputPassword1" class="form-label">Atributo</label>
-							<select class="form-control" name="sexo" id="idSexo">
-								<option value="">Seleccione Sexo</option>
-								<option value="value">FEMENINO</option>
-								<option value="value">MASCULINO</option>
-							</select>
+							<div class="form-row">
+								<div class="col">
+										<label for="exampleFormControlInput9">Desde:</label>
+									<div class="col">
+								    	<input type="text" class="form-control"  placeholder="Edad...">
+									</div>
+								</div>
+								<div class="col">
+									<label for="exampleFormControlInput9">Hasta:</label>
+									<div class="col">
+								    	<input type="text" class="form-control"  placeholder="Edad...">
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="exampleInputPassword1" class="form-label">Atributo
-							</label> <select class="form-control" name="coduo"
-								id="idUnidadOrganica">
-								<option value="">Seleccione algo</option>
-							</select>
-						</div>
+						</fieldset>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" id="btn-cerrar"
 								data-bs-dismiss="modal">Cerrar</button>
