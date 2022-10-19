@@ -1,6 +1,6 @@
 <div class="menu_lateral__container" th:fragment="menu"
 	th:each="u: ${usuario}">
-	<div class="menu_lateral__info_usuario">
+	<!-- <div class="menu_lateral__info_usuario">
 		<div class="menu_lateral__img_usuario text-center">
 			<img src="resources/img/user.png" alt="" />
 			<p class="menu_lateral__nombre_usuario" th:text="${u.nombre}"></p>
@@ -15,6 +15,61 @@
 		</div>
 	</div>
 	<div class="menu_lateral__modulos">
-		<div class="menu_lateral__modulo" th:each="uo: ${unidadorganica}" th:text="${uo.nom_uo}"></div>
+		<div class="menu_lateral__modulo" th:each="uo: ${unidadorganica}"
+			th:text="${uo.nom_uo}"></div>
+	</div> -->
+
+
+	<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+		style="height: 100%;">
+		<a href="/"
+			class="d-flex justify-content-center m-2 text-white text-decoration-none">
+			<object data="resources/svg/logo.svg" width="60" height="60"> </object>
+			<h1 class="txt-bold">SBN</h1>
+		</a>
+		<hr class="dropdown-divider">
+		<img src="https://github.com/mdo.png" alt=""
+			class="rounded-circle me-2 mx-auto mb-2" style="width:250px;">
+		<div class="container text-center mb-1">
+			<h6 class="txt-bold">CARGO</h6>
+			<p  th:each="r: ${rol}" th:if="${r.id_Rol}==${u.id_Rol}"
+				th:text="${r.descrip}"></p>
+			<h6 class="txt-bold">UNIDAD ORGANICA</h6>
+			<p th:each="uo: ${unidadorganica}" th:if="${uo.id_uo}==${u.id_uo}"
+				th:text="${uo.nom_uo}"></p>
+		</div>
+		<ul class="nav nav-pills flex-column mb-auto">
+			<li class="nav-item"><a href="#" class="nav-link active"
+				aria-current="page"> <svg class="bi me-2" width="16" height="16">
+						<use xlink:href="#home" /></svg> Home
+			</a></li>
+			<li><a href="#" class="nav-link text-white"> <svg
+						class="bi me-2" width="16" height="16">
+						<use xlink:href="#speedometer2" /></svg> Modulo 1
+			</a></li>
+			<li><a href="#" class="nav-link text-white"> <svg
+						class="bi me-2" width="16" height="16">
+						<use xlink:href="#table" /></svg> Modulo 2
+			</a></li>
+			<li><a href="#" class="nav-link text-white"> <svg
+						class="bi me-2" width="16" height="16">
+						<use xlink:href="#grid" /></svg> Modulo 3
+			</a></li>
+			<li><a href="#" class="nav-link text-white"> <svg
+						class="bi me-2" width="16" height="16">
+						<use xlink:href="#people-circle" /></svg> Modulo 4
+			</a></li>
+		</ul>
+		<hr class="dropdown-divider">
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button"
+				id="dropdownMenuButton1" data-bs-toggle="dropdown"
+				aria-expanded="false" th:text="${u.nombre}" ></button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<li><a class="dropdown-item" href="#">Profile</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="/login">Sing Out</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
