@@ -21,9 +21,8 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form id="idRegistrar" method="post"
-						action="ServletTrabajador?tipo=REGISTRAR" data-toggle="validator"
-						role="form">
+					<form th:action="@{/grabarPerfilPuesto}" 
+						method="post" th:object="${perfilPuesto}">
 						<fieldset class="form-group border p-3">
 							<legend class="col-form-label col-sm-2 pt-0">Encabezado</legend>
 							<div class="form-row">
@@ -31,7 +30,7 @@
 									<div class="form-row">
 										<label for="exampleFormControlInput3">Puesto:</label>
 										<div class="col">
-											<input type="text" class="form-control"
+											<input th:field="*{nombre}" type="text" class="form-control"
 												placeholder="Nombre del puesto...">
 										</div>
 									</div>
@@ -41,12 +40,9 @@
 										<label for="exampleFormControlSelect1">Unidad
 											Organica:</label>
 										<div class="col">
-											<select class="form-control">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
+											<select th:field="*{id_uo}" class="form-control">
+												<option value="0">Seleccione...</option>
+												<option th:each="u: ${lstUnidadesOrganicas}" th:value="${u.id_uo}" th:text="${u.nom_uo}"></option>
 											</select>
 										</div>
 									</div>
@@ -57,8 +53,9 @@
 								<div class="form-row">
 									<label for="exampleFormControlInput4">Responde a:</label>
 									<div class="col">
-										<input type="text" class="form-control"
-											placeholder="Nombre...">
+									<!-- th:if="${u.id_uo}==${}" th:each="u: ${lstUnidadesOrganicas}"  
+										 th:text="${u.nom_jefe_uniOrg}" -->
+										<input type="text" readonly>
 									</div>
 									<div>
 										<div class="col">
@@ -66,10 +63,10 @@
 												<label for="exampleFormControlInput8">Turno de
 													trabajo:</label>
 												<div class="col">
-													<select class="form-control">
-														<option>DIURNO</option>
-														<option>NOCHE</option>
-														<option>MIXTO</option>
+													<select th:field="*{turno}" class="form-control">
+														<option th:value="'Diurno'">DIURNO</option>
+														<option th:value="'Noche'">NOCHE</option>
+														<option th:value="'Mixto'">MIXTO</option>
 													</select>
 												</div>
 											</div>
@@ -83,7 +80,7 @@
 							<label for="exampleFormControlTextarea1">Descripción del
 								Puesto:</label>
 							<div class="col">
-								<textarea class="form-control" rows="3"
+								<textarea th:field="*{descrip_perfil}" class="form-control" rows="3"
 									placeholder="Descripción..."></textarea>
 							</div>
 						</div>
@@ -100,9 +97,9 @@
 											</div>
 											<div class="col">
 												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio"
+													<input th:field="*{estudios}" class="form-check-input" type="radio"
 														name="inlineRadioOptions" id="inlineRadio1"
-														value="option1"> <label class="form-check-label"
+														th:value="'Secundaria'"> <label class="form-check-label"
 														for="inlineRadio1">Si</label>
 												</div>
 											</div>
@@ -116,9 +113,9 @@
 											</div>
 											<div class="col">
 												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio"
+													<input th:field="*{estudios}" class="form-check-input" type="radio"
 														name="inlineRadioOptions" id="inlineRadio1"
-														value="option1"> <label class="form-check-label"
+														th:value="'Técnico-Profesional'"> <label class="form-check-label"
 														for="inlineRadio1">Si</label>
 												</div>
 											</div>
@@ -132,9 +129,9 @@
 											</div>
 											<div class="col">
 												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio"
+													<input th:field="*{estudios}" class="form-check-input" type="radio"
 														name="inlineRadioOptions" id="inlineRadio1"
-														value="option1"> <label class="form-check-label"
+														th:value="'Universitarios'"> <label class="form-check-label"
 														for="inlineRadio1">Si</label>
 												</div>
 											</div>
@@ -152,13 +149,13 @@
 									<div class="col">
 										<label for="exampleFormControlInput9">Desde:</label>
 										<div class="col">
-											<input type="text" class="form-control" placeholder="Edad...">
+											<input th:field="*{edad_desde}" type="text" class="form-control" placeholder="Edad...">
 										</div>
 									</div>
 									<div class="col">
 										<label for="exampleFormControlInput9">Hasta:</label>
 										<div class="col">
-											<input type="text" class="form-control" placeholder="Edad...">
+											<input th:field="*{edad_hasta}" type="text" class="form-control" placeholder="Edad...">
 										</div>
 									</div>
 								</div>
@@ -170,6 +167,8 @@
 							<button type="submit" class="btn btn-success">Grabar</button>
 						</div>
 					</form>
+					<br>
+					<div th:class="${clase}" role="alert" th:text="${mensaje}"></div>
 				</div>
 			</div>
 		</div>

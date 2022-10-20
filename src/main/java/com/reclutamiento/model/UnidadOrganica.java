@@ -12,5 +12,6 @@ import lombok.Data;
 public class UnidadOrganica {
 	@Id
 	private int id_uo;
-	private String nom_uo; 
+	private String nom_uo;
+	private String nom_jefe_uni_Org;
 }

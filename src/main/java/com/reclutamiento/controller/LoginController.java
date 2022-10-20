@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.reclutamiento.model.PerfilPuesto;
 import com.reclutamiento.model.Rol;
 import com.reclutamiento.model.UnidadOrganica;
 import com.reclutamiento.model.Usuario;
@@ -29,6 +30,7 @@ public class LoginController {
 		return "login";
 	}
 	Usuario u;
+	PerfilPuesto p;
 	@PostMapping("/home")
 	public String validarUsu(@ModelAttribute Usuario usuario, Model model) {		
 		u = uRepo.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword());
@@ -40,6 +42,8 @@ public class LoginController {
 			model.addAttribute("usuario", u);
 			model.addAttribute("rol", rRepo.findAll());
 			model.addAttribute("unidadorganica", uoRepo.findAll());
+			model.addAttribute("perfilPuesto", new PerfilPuesto());
+			model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 			return "principal";
 		}		
 	}
