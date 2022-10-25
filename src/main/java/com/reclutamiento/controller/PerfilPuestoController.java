@@ -41,6 +41,6 @@ public class PerfilPuestoController {
 			model.addAttribute("mensaje", "Error al registrar el Perfil de Puesto");
 		}
 		
-		return "principal/";
+		return "principal";
 	}
 }
