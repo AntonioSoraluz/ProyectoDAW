@@ -2,6 +2,8 @@ package com.reclutamiento.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -20,4 +22,8 @@ public class PerfilPuesto {
 	private String estudios;
 	private int edad_desde;
 	private int edad_hasta;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_uo", insertable = false, updatable = false)
+	private UnidadOrganica objUniOrg;
 }

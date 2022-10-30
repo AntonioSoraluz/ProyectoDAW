@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Principal</title>
 <link rel="stylesheet" th:href="@{resources/css/principal.css}" />
 <div th:replace="librerias::librerias" th:remove="tag"></div>
@@ -11,7 +11,8 @@
 	<div class="" th:replace="menulateral::menu"></div>
 	<header class="encabezado block"> Header </header>
 	<div class="contenido">
-		<div th:replace="perfilesPuesto::perfilpuesto"></div>
+		<!--<div th:replace="perfilesPuesto::perfilpuesto"></div>-->
+		<div th:replace="empleados::empleado">
 	</div>
 </body>
 </html>
