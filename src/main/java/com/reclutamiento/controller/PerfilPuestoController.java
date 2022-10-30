@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.reclutamiento.model.PerfilPuesto;
-import com.reclutamiento.model.Usuario;
 import com.reclutamiento.model.repository.PerfilPuestoRepository;
 import com.reclutamiento.model.repository.RolRepository;
 import com.reclutamiento.model.repository.UnidadOrgRepository;
-import com.reclutamiento.model.repository.UsuarioRepository;
 
 @Controller
 public class PerfilPuestoController {
@@ -21,25 +19,37 @@ public class PerfilPuestoController {
 	@Autowired
 	private UnidadOrgRepository uoRepo;
 	@Autowired
-	private PerfilPuestoRepository pfRepo;
+	private PerfilPuestoRepository ppRepo;
 	PerfilPuesto p;
-	/*Aun no se usa*/
-	/*@GetMapping("/cargarPerfilPuesto")
+	@GetMapping("/cargarPerPue")
 	public String abrirPerfilPuesto(Model model) {
 		model.addAttribute("perfilPuesto", new PerfilPuesto());
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		return "perfilesPuesto";
-	}*/
-	@PostMapping("/grabarPerfilPuesto")
+		return "mantPerPue";
+	}
+	@PostMapping("/grabarPerPue")
 	public String grabarPerfilPuesto(@ModelAttribute PerfilPuesto perfilPuesto, Model model) {
 		try {
-			pfRepo.save(perfilPuesto);
+			ppRepo.save(perfilPuesto);
 			model.addAttribute("clase", "alert alert-success");
 			model.addAttribute("mensaje", "Perfil de Puesto registrado");
 		} catch (Exception e) {
 			model.addAttribute("clase", "alert alert-danger");
 			model.addAttribute("mensaje", "Error al registrar el Perfil de Puesto");
+			model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 		}
+		return "mantPerPue";
+	}
+	@PostMapping("/buscarPerfil")
+	public String BuscarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {
+		model.addAttribute("perfilPuesto", ppRepo.findById(p.getClave_perfil()));
+		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
+		return "mantPerPue";
+	}
+	@PostMapping("/eliminarPerfil")
+	public String EliminarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {
+		ppRepo.deleteById(p.getClave_perfil());
+		model.addAttribute("lstPerPue", ppRepo.findAll());
 		return "principal";
 	}
 }

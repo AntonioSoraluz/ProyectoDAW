@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Mantenimiento Empleado</title>
+<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
+<div th:replace="librerias::librerias" th:remove="tag"></div>
+</head>
+<body>
+	<!-- INSERTAR MENU LATERAL -->
+	<div class="" th:replace="menulateral::menu"></div>
+	<header class="encabezado block"> Header </header>
+	<div class="contenido">
+		<div class="">
+			<form th:action="@{/grabarEmpleado}" method="post"
+				th:object="${empleado}" id="formulario" class="form-row needs-validation" novalidate>
+				<div class="">
+					<input th:field="*{id_empleado}" type="hidden" class="form-control">
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom01" class="form-label">Nombre:</label>
+							<div class="col">
+								<input th:field="*{nombre}" type="text" class="form-control"
+									id="validationCustom01" placeholder="Nombre del Empleado..."
+									required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,30}"> 
+								<div class="invalid-feedback">Ingrese un nombre correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom02" class="form-label">Apellidos:</label>
+							<div class="col">
+								<input th:field="*{apellidos}" type="text" class="form-control"
+									id="validationCustom02" placeholder="Apellidos del Empleado..."
+									required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,30}">
+								<div class="invalid-feedback">Ingrese los apellidos correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<label for="validationCustom03" class="form-label">Género:</label>
+						<div class="col">
+							<div class="form-check form-check-inline">
+								<input th:field="*{genero}" class="form-check-input"
+									type="radio" name="inlineRadioOptions" id="invalidCheck"
+									th:value="'Femenino'" required><label class="form-check-label"
+									for="invalidCheck">Femenino</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input th:field="*{genero}" class="form-check-input"
+									type="radio" name="inlineRadioOptions" id="invalidCheck"
+									th:value="'Masculino'" required><label class="form-check-label"
+									for="invalidCheck">Masculino</label>
+								<div class="invalid-feedback">Seleccione un género.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom04" class="form-label">Dirección:</label>
+							<div class="col">
+								<input th:field="*{direccion}" type="text" class="form-control"
+									id="validationCustom04" placeholder="Dirección del Empleado..."
+									required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s#0-9]{5,50}">
+								<div class="invalid-feedback">Ingrese una dirección correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom05" class="form-label">Teléfono:</label>
+							<div class="col">
+								<input th:field="*{telefono}" type="text" class="form-control"
+									id="validationCustom05" placeholder="Teléfono del Empleado..."
+									required pattern="[0-9]{9}">
+								<div class="invalid-feedback">Ingrese el número de
+									teléfono correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom06" class="form-label">Fecha
+								Registro:</label>
+							<div class="col">
+								<input th:field="*{fecha_registro}" type="date"
+									class="form-control" id="validationCustom06"
+									placeholder="Fecha de Registro..." required>
+								<div class="invalid-feedback">Ingrese una fecha.</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<label for="validationCustom07" class="form-label">Unidad
+							Organica:</label>
+						<div class="col">
+							<select th:field="*{id_uo}" class="form-control"
+								id="validationCustom07" required>
+								<option selected disabled value="0">Seleccione...</option>
+								<option th:each="u: ${lstUnidadesOrganicas}"
+									th:value="${u.id_uo}" th:text="${u.nom_uo}"></option>
+							</select>
+							<div class="invalid-feedback">Seleccione una unidad
+								organica.</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="modal-footer">
+					<a href="/cargarEmpleado" class="btn btn-secondary">Nuevo</a>
+					<button type="submit" class="btn btn-success">Grabar</button>
+				</div>
+			</form>
+			<br>
+			<div th:class="${clase}" role="alert" th:text="${mensaje}"></div>
+		</div>
+	</div>
+	<script src="resources/js/mantValida.js"></script>
+</body>
+</html>
