@@ -44,7 +44,6 @@ public class PerfilPuestoController {
 	}
 	@PostMapping("/buscarPerfil")
 	public String BuscarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {
-		
 		model.addAttribute("perfilPuesto", ppRepo.findById(p.getClave_perfil()));
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 		return "mantPerPue";
