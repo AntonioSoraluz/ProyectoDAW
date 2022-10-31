@@ -21,11 +21,22 @@ public class PerfilPuestoController {
 	@Autowired
 	private PerfilPuestoRepository ppRepo;
 	PerfilPuesto p;
+	
+	@GetMapping("/listarPerPue")
+	public String listarPerfilPuesto(Model model) {
+		model.addAttribute("pagina", "perfilesPuesto");
+		model.addAttribute("modulo", "perfilpuesto");
+		model.addAttribute("lstPerPue", ppRepo.findAll());
+		return "principal";
+	}
+	
 	@GetMapping("/cargarPerPue")
 	public String abrirPerfilPuesto(Model model) {
 		model.addAttribute("perfilPuesto", new PerfilPuesto());
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		return "mantPerPue";
+		model.addAttribute("pagina", "mantPerPue");
+		model.addAttribute("modulo", "regPerPue");
+		return "principal";
 	}
 	@PostMapping("/grabarPerPue")
 	public String grabarPerfilPuesto(@ModelAttribute PerfilPuesto perfilPuesto, Model model) {
@@ -44,7 +55,9 @@ public class PerfilPuestoController {
 	public String BuscarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {
 		model.addAttribute("perfilPuesto", ppRepo.findById(p.getClave_perfil()));
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		return "mantPerPue";
+		model.addAttribute("pagina", "mantPerPue");
+		model.addAttribute("modulo", "regPerPue");
+		return "principal";
 	}
 	@PostMapping("/eliminarPerfil")
 	public String EliminarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {

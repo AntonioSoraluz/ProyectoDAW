@@ -18,11 +18,22 @@ public class EmpleadoController {
 	private UnidadOrgRepository uoRepo;
 	@Autowired
 	private EmpleadoRepository eRepo;
+	
+	@GetMapping("/monstrarPagEmpleado")
+	public String mostrarPaginaEmpleado(Model model) {
+		model.addAttribute("lstEmp", eRepo.findAll());
+		model.addAttribute("pagina", "empleados");
+		model.addAttribute("modulo", "empleado");
+		return "principal";
+	}
+	
 	@GetMapping("/cargarEmpleado")
 	public String abrirEmpleado(Model model) {
 		model.addAttribute("empleado", new Empleado());
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		return "mantEmpleado";
+		model.addAttribute("pagina", "mantEmpleado");
+		model.addAttribute("modulo", "mantEmpleado");
+		return "principal";
 	}
 	@PostMapping("/grabarEmpleado")
 	public String grabarEmpleado(@ModelAttribute Empleado empleado, Model model) {

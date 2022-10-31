@@ -36,9 +36,9 @@ public class LoginController {
 		return "login";
 	}
 	Usuario u;
-	@PostMapping("/home")
-	public String validarUsu(@ModelAttribute Usuario usuario, Model model) {		
-		u = uRepo.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword());
+	@GetMapping("/home")
+	public String validarUsu(Model model) {		
+		/*u = uRepo.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword());
 		if (u==null) {
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("mensaje","usuario o clave incorrecto");
@@ -50,6 +50,9 @@ public class LoginController {
 			model.addAttribute("lstPerPue", ppRepo.findAll());
 			model.addAttribute("lstEmp", eRepo.findAll());
 			return "principal";
-		}		
+		}*/	
+		model.addAttribute("pagina", "bienvenida");
+		model.addAttribute("modulo", "bienvenida");
+		return "principal";
 	}
 }

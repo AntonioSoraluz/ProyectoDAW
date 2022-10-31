@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Mantenimiento Empleado</title>
-<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
-<div th:replace="librerias::librerias" th:remove="tag"></div>
-</head>
-<body>
-	<!-- INSERTAR MENU LATERAL -->
-	<div class="" th:replace="menulateral::menu"></div>
-	<header class="encabezado block"> Header </header>
-	<div class="contenido">
+<div class="contenido" th:fragment="mantEmpleado">
 		<div class="">
 			<form th:action="@{/grabarEmpleado}" method="post"
 				th:object="${empleado}" id="formulario" class="form-row needs-validation" novalidate>
