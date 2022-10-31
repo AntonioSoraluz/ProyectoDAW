@@ -63,10 +63,11 @@
 			</div>
 		</div>
 	</div>
-	<header class="encabezado block"> Header </header>
-	<div class="contenido">
-		<!--<div th:replace="perfilesPuesto::perfilpuesto"></div>-->
+	<header class="encabezado block" th:fragment="headerPrin"> Header </header>
+	<!--<div class="contenido">
 		<div th:replace="${pagina} :: ${modulo}"></div>
-	</div>
+	</div>  -->
+		<!--<div th:replace="perfilesPuesto::perfilpuesto"></div>-->
+	
 </body>
 </html>

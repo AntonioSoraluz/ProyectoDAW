@@ -1,4 +1,15 @@
-<div class="" th:fragment="empleado">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Principal</title>
+<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
+<div th:replace="librerias::librerias" th:remove="tag"></div>
+</head>
+<body>
+ <!--<div class=""  th:fragment="empleado" >   --><div class=""  th:replace="principal :: menu"> </div>
+ <header class="encabezado block" th:replace="principal :: headerPrin"> Header </header>
+ <div class="contenido">
 	<center>
 		<h1>EMPLEADOS</h1>
 	</center>
@@ -46,3 +57,5 @@
 		</table>
 	</div>
 </div>
+</body>
+</html>
