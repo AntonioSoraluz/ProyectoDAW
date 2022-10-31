@@ -22,18 +22,18 @@ public class EmpleadoController {
 	@GetMapping("/monstrarPagEmpleado")
 	public String mostrarPaginaEmpleado(Model model) {
 		model.addAttribute("lstEmp", eRepo.findAll());
-		model.addAttribute("pagina", "empleados");
-		model.addAttribute("modulo", "empleado");
-		return "principal";
+		/*model.addAttribute("pagina", "empleados");
+		model.addAttribute("modulo", "empleado");*/
+		return "empleados";
 	}
 	
 	@GetMapping("/cargarEmpleado")
 	public String abrirEmpleado(Model model) {
 		model.addAttribute("empleado", new Empleado());
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		model.addAttribute("pagina", "mantEmpleado");
-		model.addAttribute("modulo", "mantEmpleado");
-		return "principal";
+		/*model.addAttribute("pagina", "mantEmpleado");
+		model.addAttribute("modulo", "mantEmpleado");*/
+		return "mantEmpleado";
 	}
 	@PostMapping("/grabarEmpleado")
 	public String grabarEmpleado(@ModelAttribute Empleado empleado, Model model) {
@@ -59,6 +59,6 @@ public class EmpleadoController {
 	public String EliminarEmpleado(@ModelAttribute Empleado e, Model model) {
 		eRepo.deleteById(e.getId_empleado());
 		model.addAttribute("lstEmp", eRepo.findAll());
-		return "mantEmpleado";
+		return "redirect:/monstrarPagEmpleado";
 	}
 }

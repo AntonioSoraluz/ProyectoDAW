@@ -24,19 +24,19 @@ public class PerfilPuestoController {
 	
 	@GetMapping("/listarPerPue")
 	public String listarPerfilPuesto(Model model) {
-		model.addAttribute("pagina", "perfilesPuesto");
-		model.addAttribute("modulo", "perfilpuesto");
+		/*model.addAttribute("pagina", "perfilesPuesto");
+		model.addAttribute("modulo", "perfilpuesto");*/
 		model.addAttribute("lstPerPue", ppRepo.findAll());
-		return "principal";
+		return "perfilesPuesto";
 	}
 	
 	@GetMapping("/cargarPerPue")
 	public String abrirPerfilPuesto(Model model) {
 		model.addAttribute("perfilPuesto", new PerfilPuesto());
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		model.addAttribute("pagina", "mantPerPue");
-		model.addAttribute("modulo", "regPerPue");
-		return "principal";
+		/*model.addAttribute("pagina", "mantPerPue");
+		model.addAttribute("modulo", "regPerPue");*/
+		return "mantPerPue";
 	}
 	@PostMapping("/grabarPerPue")
 	public String grabarPerfilPuesto(@ModelAttribute PerfilPuesto perfilPuesto, Model model) {
@@ -57,12 +57,12 @@ public class PerfilPuestoController {
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 		model.addAttribute("pagina", "mantPerPue");
 		model.addAttribute("modulo", "regPerPue");
-		return "principal";
+		return "mantPerPue";
 	}
 	@PostMapping("/eliminarPerfil")
 	public String EliminarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {
 		ppRepo.deleteById(p.getClave_perfil());
 		model.addAttribute("lstPerPue", ppRepo.findAll());
-		return "principal";
+		return "redirect:/listarPerPue";
 	}
 }
