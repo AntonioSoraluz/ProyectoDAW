@@ -11,21 +11,4 @@ body {
 		display: flex;
 		align-items: flex-start;
 }
-/* Styles del Login*/
-.color-login{
-	background:#F1F1F1;
-}
-.card::before{
-	content: "LOGIN";
-	display: block;
-	background-color: #58595B;
-	color: white;
-	width: 400px;
-	margin: auto;
-	padding: 6px;
-	border-radius: 10px 10px 0 0;
-	text-align: center;
-	font-size: 15pt;
-	font-weight: bold;
-	letter-spacing: 5px;
-}
+
