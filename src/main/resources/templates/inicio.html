@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<div th:replace="librerias::librerias" th:remove="tag"></div>
+</head>
+<style>
+/* Styles del Login*/
+.color-login{
+	background:#F1F1F1;
+}
+.card::before{
+	content: "LOGIN";
+	display: block;
+	background-color: #58595B;
+	color: white;
+	width: 500px;
+	margin: auto;
+	padding: 6px;
+	border-radius: 10px 10px 0 0;
+	text-align: center;
+	font-size: 15pt;
+	font-weight: bold;
+	letter-spacing: 5px;
+}
+form > .form-group{
+	margin: .5em 0 .5em 0;
+	font-size: 18pt;
+}
+form > .boton_submit{
+	width: 250px;
+	margin: auto;
+	margin-top: 1em;
+	font-size: 15pt;
+}
+</style>
+<body style="height: 100vh">
+	<div
+		class="container-fluid bg-danger p-2 d-flex justify-content-center">
+		<h4 class="text-cemter text-white">Año del Fortalecimiento de la
+			Soberanía Nacional</h4>
+	</div>
+	<div class="container-fluid d-flex align-items-center"
+		style="height: calc(100vh - 101px)">
+		<!-- Login de bootstrap -->
+		<div class="card mb-10 mx-auto border-0"
+			style="max-width: 650px; height: auto">
+			<div class="row g-0">
+				<div class="login-left col-md-12 border color-login rounded">
+					<div class="card-body">
+					<div class="alert alert-danger" th:if="${param.error}">
+						Email o contraseña erroneas
+					</div>
+					<div class="alert alert-success" th:if="${param.logout}">
+						Acaba de cerrar sesion con exito
+					</div>
+						<form th:action="@{/login}" method="post" 
+							class="d-flex flex-column">
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="card-text">Email</label>
+								<input required type="text"
+									name="username" class="form-control" id="exampleInputEmail1"
+									aria-describedby="emailHelp" placeholder="Ingrese su email">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Contraseña</label> <input
+									class="form-control" required
+									name="password" type="password" id="exampleInputPassword1"
+									placeholder="Contraseña">
+							</div>
+
+							<button type="submit" class="btn btn-danger p-2 boton_submit">ENTRAR</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="container-fluid bg-dark p-4"></div>
+</body>
+</html>
