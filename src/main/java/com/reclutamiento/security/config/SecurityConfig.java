@@ -1,4 +1,4 @@
-package com.reclutamiento;
+package com.reclutamiento.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,14 +16,7 @@ public class SecurityConfig {
 				.permitAll());
 		
 		
-		
-		/*
-		 * http.logout(logout -> logout .logoutUrl("/my/logout")
-		 * .logoutSuccessUrl("/my/index") .logoutSuccessHandler()
-		 * .invalidateHttpSession(true) .addLogoutHandler(null) .deleteCookies("asd") );
-		 */
-		 
-		
 		return http.build();
 	}
+	
 }

@@ -53,10 +53,9 @@ public class PerfilPuestoController {
 	}
 	@PostMapping("/buscarPerfil")
 	public String BuscarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {
-		model.addAttribute("perfilPuesto", ppRepo.findById(p.getClave_perfil()));
+		model.addAttribute("perfilpuesto", ppRepo.findById(p.getClave_perfil()));
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		model.addAttribute("pagina", "mantPerPue");
-		model.addAttribute("modulo", "regPerPue");
+		model.addAttribute("pagina", "mantPerPue"); model.addAttribute("modulo","regPerPue");
 		return "mantPerPue";
 	}
 	@PostMapping("/eliminarPerfil")
