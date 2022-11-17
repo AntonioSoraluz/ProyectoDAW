@@ -1,6 +1,6 @@
 package com.reclutamiento.model;
 
-import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,8 +13,16 @@ import lombok.Data;
 @Table(name = "tb_rol_operacion")
 @Data
 public class RolOperacion {
-	@Id
-	private int id_Rol_Operacion;
-	private int id_Rol;
-	private int id_Operacion;
+	
+	@EmbeddedId
+	private RolOperacionPK pk;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_Rol", insertable = false, updatable = false, referencedColumnName = "id_Rol")
+	private Rol rol;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_Operacion", insertable = false, updatable = false, referencedColumnName = "id_Operacion")
+	private Operacion operacion;
+	
 }
