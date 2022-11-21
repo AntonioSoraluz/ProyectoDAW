@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Principal</title>
+<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
+<div th:replace="librerias::librerias" th:remove="tag"></div>
+</head>
+<body>
+<div class=""  th:replace="principal :: menu"> </div>
+<header class="encabezado block" th:replace="principal :: headerPrin"> Header </header>
+
+<div class="contenido" >
+		<div class="">
+			<form th:action="@{/grabarProveedor}" method="post"
+				th:object="${proveedor}" id="formulario" class="form-row needs-validation" novalidate>
+				<div class="">
+					<input th:field="*{cod_Prov}" type="hidden" class="form-control">
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom01" class="form-label">RUC:</label>
+							<div class="col">
+								<input th:field="*{num_Ruc}" type="text" class="form-control"
+									id="validationCustom01" placeholder="Ruc..."
+									required pattern="[0-9]{11}"> 
+								<div class="invalid-feedback">Ingrese un ruc correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom02" class="form-label">Razon Social:</label>
+							<div class="col">
+								<input th:field="*{rzon_Soc}" type="text" class="form-control"
+									id="validationCustom02" placeholder="Razon Social..."
+									required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s .]{2,30}">
+								<div class="invalid-feedback">Ingrese la razon social correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom03" class="form-label">Dirección:</label>
+							<div class="col">
+								<input th:field="*{direccion}" type="text" class="form-control"
+									id="validationCustom03" placeholder="Dirección..."
+									required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s .0-9]{2,30}">
+								<div class="invalid-feedback">Ingrese la dirección correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom04" class="form-label">Teléfono:</label>
+							<div class="col">
+								<input th:field="*{telf}" type="text" class="form-control"
+									id="validationCustom04" placeholder="Teléfono de Proveedor..."
+									required pattern="[0-9]{9}">
+								<div class="invalid-feedback">Ingrese un teléfono correctamente.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom05" class="form-label">Fecha
+								Registro:</label>
+							<div class="col">
+								<input th:field="*{fech_Registro_Prove}" type="date"
+									class="form-control" id="validationCustom05"
+									placeholder="Fecha de Registro..." required>
+								<div class="invalid-feedback">Ingrese una fecha.</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<br>
+				<div class="modal-footer">
+					<a href="/cargarProveedor" class="btn btn-secondary">Nuevo</a>
+					<button type="submit" class="btn btn-success">Grabar</button>
+				</div>
+			</form>
+			<br>
+			<div th:class="${claseProve}" role="alert" th:text="${mensajeProve}"></div>
+		</div>
+	</div>
+	<script src="resources/js/mantValida.js"></script>
+
+</body>
+</html>
