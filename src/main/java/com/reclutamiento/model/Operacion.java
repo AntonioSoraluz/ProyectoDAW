@@ -21,11 +21,7 @@ public class Operacion {
 	@Id
 	private int id_Operacion;
 	private String acceso;
-	private int id_Modulo;
-	
-	@ManyToOne
-	@JoinColumn(name="id_Modulo", insertable = false, updatable = false)
-	private Modulo modulo;
+	private String ruta;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "operacion")

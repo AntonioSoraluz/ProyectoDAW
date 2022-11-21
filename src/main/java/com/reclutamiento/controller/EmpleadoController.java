@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.reclutamiento.model.Empleado;
-import com.reclutamiento.model.PerfilPuesto;
 import com.reclutamiento.model.repository.EmpleadoRepository;
 import com.reclutamiento.model.repository.UnidadOrgRepository;
 
