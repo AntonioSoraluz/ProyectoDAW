@@ -1,3 +1,16 @@
-<div class="container" th:fragment="bienvenida">
-<h1>BIENVENIDO A LA PAGINA</h1>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Principal</title>
+<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
+<body>
+
+<div th:insert="librerias::librerias" th:remove="tag"></div>
+<div class=""  th:replace="principal :: menu"> </div>
+<header class="encabezado block" th:replace="principal :: headerPrin"> Header </header>
+<div class="contenido">
+	<h1>BIENVENIDO A LA PAGINA</h1>
 </div>
+
+</body>
