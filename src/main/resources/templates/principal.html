@@ -33,22 +33,12 @@
 							height="16">
 						<use xlink:href="#home" /></svg> Home
 				</a></li>
-				<li><a href="/monstrarPagEmpleado" class="nav-link text-white">
+				<li th:each="row: ${session.ENLACES}">
+				<a th:href="${row.ruta}" class="nav-link text-white" th:text="${row.acceso}">
 						<svg class="bi me-2" width="16" height="16">
-						<use xlink:href="#speedometer2" /></svg> Listado Empleados
-				</a></li>
-				<li><a href="/listarPerPue" class="nav-link text-white"> <svg
-							class="bi me-2" width="16" height="16">
-						<use xlink:href="#table" /></svg> Listado Perfiles de Puestos
-				</a></li>
-				<li><a href="#" class="nav-link text-white"> <svg
-							class="bi me-2" width="16" height="16">
-						<use xlink:href="#grid" /></svg> Modulo 3
-				</a></li>
-				<li><a href="#" class="nav-link text-white"> <svg
-							class="bi me-2" width="16" height="16">
-						<use xlink:href="#people-circle" /></svg> Modulo 4
-				</a></li>
+						<use xlink:href="#speedometer2" /></svg></a>
+				</li>
+				
 			</ul>
 			<hr class="dropdown-divider">
 			<div class="dropdown">
@@ -64,10 +54,5 @@
 		</div>
 	</div>
 	<header class="encabezado block" th:fragment="headerPrin"> Header </header>
-	<!--<div class="contenido">
-		<div th:replace="${pagina} :: ${modulo}"></div>
-	</div>  -->
-		<!--<div th:replace="perfilesPuesto::perfilpuesto"></div>-->
-	
 </body>
 </html>

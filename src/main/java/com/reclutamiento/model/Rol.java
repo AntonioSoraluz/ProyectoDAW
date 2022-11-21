@@ -1,9 +1,13 @@
 package com.reclutamiento.model;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -14,4 +18,12 @@ public class Rol {
 	@Id
 	private int id_Rol;
 	private String descrip;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "rol")
+	private List<Usuario> listUsuarios;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "rol")
+	private List<RolOperacion> listRolOperacion;
 }
