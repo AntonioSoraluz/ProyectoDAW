@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Memorandum CAS</title>
+<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
+<div th:replace="librerias::librerias" th:remove="tag"></div>
+</head>
+<body>
+	 <!--<div class=""  th:fragment="empleado" >   --><div class=""  th:replace="principal :: menu"> </div>
+ 	<header class="encabezado block" th:replace="principal :: headerPrin"> Header </header>
+ 	<div class="contenido" >
+ 		<div class="">
+ 			<form th:action="@{/cargarMemoCas}" method="post"
+				th:object="${Memorandum}" id="formulario" class="form-row needs-validation" novalidate>
+				<div class="">
+				</div>
+ 			</form>
+ 		</div>
+ 	</div>
+</body>
+</html>
