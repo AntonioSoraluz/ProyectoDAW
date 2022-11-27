@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Principal</title>
+
+<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
+<div th:replace="librerias::librerias" th:remove="tag"></div>
+</head>
+<body>
+	<!--<div class=""  th:fragment="empleado" >   -->
+	<div class="" th:replace="principal :: menu"></div>
+	<header class="encabezado block" th:replace="principal :: headerPrin">
+		Header </header>
+
+	<div class="contenido" th:fragment="carConsultaPerPue">
+		<div class="">
+			<form th:action="@{/consPerPue}" method="post"
+				th:object="${perfilPuesto}" id="formulario"
+				class="form-row needs-validation" novalidate>
+				<div class="form-row">
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom02" class="form-label">Unidad
+								Organica:</label>
+							<div class="col">
+								<select th:field="*{id_uo}" class="form-control"
+									id="validationCustom02" required>
+									<option value="0">Seleccione...</option>
+									<option th:each="u: ${lstUnidadesOrganicas}"
+										th:value="${u.id_uo}" th:text="${u.nom_uo}"></option>
+								</select>
+								<div class="invalid-feedback">Selecciones una unidad
+									organica.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom04" class="form-label">Turno
+								de trabajo:</label>
+							<div class="col">
+								<select th:field="*{turno}" class="form-control"
+									id="validationCustom04" required>
+									<option selected value="">Seleccione...</option>
+									<option th:value="'Diurno'">Diurno</option>
+									<option th:value="'Noche'">Noche</option>
+									<option th:value="'Mixto'">Mixto</option>
+								</select>
+								<div class="invalid-feedback">Seleccione un turno.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-row">
+							<label for="validationCustom04" class="form-label">Estudios:</label>
+							<div class="col">
+								<select th:field="*{estudios}" class="form-control"
+									id="validationCustom04" required>
+									<option selected value="">Seleccione...</option>
+									<option th:value="'Secundaria'">Secundaria</option>
+									<option th:value="'Técnico-Profesional'">Técnico-Profesional</option>
+									<option th:value="'Universitarios'">Universitarios</option>
+								</select>
+								<div class="invalid-feedback">Seleccione un nivel de estudios.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Consulta</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="resources/js/mantValida.js"></script>
+</body>
+</html>
