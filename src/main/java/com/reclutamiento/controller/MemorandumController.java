@@ -32,6 +32,7 @@ import java.util.Map;
 
 @Controller
 public class MemorandumController {
+
     @Autowired
     private MemorandumRepository mmRepo;
     @Autowired
@@ -41,11 +42,18 @@ public class MemorandumController {
     @Autowired
     private DataSource dataSource;
 
-    @GetMapping("/memo")
-    public String abrirMemoCas(Model model) {
-        model.addAttribute("memorandum", new Memorandum());
-        return "memoCas";
-    }
+	@GetMapping("/cargarMemoCas")
+	public String abrirMemoCas(Model model) {
+		model.addAttribute("memorandum", new Memorandum());
+		return "memoCas";
+	}
+  
+  @GetMapping("/memo")
+	public String mostrarPagMemorandums(Model model) {
+		model.addAttribute("lstMemo", mmRepo.findAll());
+		return "verMemorandums";
+	}
+  
     @PostMapping("/memo/reporte")
     public void reporte(HttpServletResponse response, @ModelAttribute Memorandum memorandum) {
         response.setHeader("Content-Disposition", "inline;");
