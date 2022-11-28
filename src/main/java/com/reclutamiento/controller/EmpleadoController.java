@@ -56,8 +56,16 @@ public class EmpleadoController {
 	}
 	@PostMapping("/eliminarEmpleado")
 	public String EliminarEmpleado(@ModelAttribute Empleado e, Model model) {
-		eRepo.deleteById(e.getId_empleado());
+		try {
+			eRepo.deleteById(e.getId_empleado());
+			model.addAttribute("mensaje", "Se elimino correctamente");
+			model.addAttribute("clase", "alert alert-success");
+		} catch (Exception e2) {
+			model.addAttribute("mensaje", "Este registro tiene un vinculo en otra parte");
+			model.addAttribute("clase", "alert alert-danger");
+		}
+		
 		model.addAttribute("lstEmp", eRepo.findAll());
-		return "redirect:/monstrarPagEmpleado";
+		return "empleados";
 	}
 }
