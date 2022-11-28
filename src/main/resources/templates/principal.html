@@ -10,7 +10,7 @@
 	<!-- INSERTAR MENU LATERAL -->
 	<div class="menu_lateral__container" th:fragment="menu">
 
-		<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+		<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" th:object="${session.USUARIO}"
 			style="height: 100%;">
 			<a href="/"
 				class="d-flex justify-content-center m-2 text-white text-decoration-none">
@@ -23,9 +23,9 @@
 				class="rounded-circle me-2 mx-auto mb-2" style="width: 250px;">
 			<div class="container text-center mb-1">
 				<h6 class="txt-bold">CARGO</h6>
-				<p>Jefe</p>
+				<p th:text="*{rol.descrip}"></p>
 				<h6 class="txt-bold">UNIDAD ORGANICA</h6>
-				<p>Unidad de Organizicion del Ministerio de vivienda</p>
+				<p th:text="*{unidadorganica.nom_uo}">Unidad de Organizicion del Ministerio de vivienda</p>
 			</div>
 			<ul class="nav nav-pills flex-column mb-auto">
 				<li class="nav-item"><a href="/home" class="nav-link active"
@@ -44,11 +44,11 @@
 			<div class="dropdown">
 				<button class="btn btn-secondary dropdown-toggle" type="button"
 					id="dropdownMenuButton1" data-bs-toggle="dropdown"
-					aria-expanded="false">Dwight Anthony Huanca Torres</button>
+					aria-expanded="false" th:text="*{nombre}"></button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					<li><a class="dropdown-item" href="#">Profile</a></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Sing Out</a></li>
+					<li><a class="dropdown-item" href="/login?logout">Sing Out</a></li>
 				</ul>
 			</div>
 		</div>

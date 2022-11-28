@@ -13,8 +13,8 @@ import com.reclutamiento.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	
 	//Query que devuelve el Usuario Logueado (JPQL)
-	@Query("select u from Usuario u where u.email=?1")
-	public Usuario iniciarSesion(String email);
+	@Query("select u from Usuario u where u.email=?1 and u.password=?2")
+	public Usuario iniciarSesion(String email, String clave);
 	
 	//Query mostrar operaciones con los moduloss
 	@Query("SELECT o FROM RolOperacion op "
