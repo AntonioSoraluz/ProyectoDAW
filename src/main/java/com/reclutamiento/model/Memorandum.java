@@ -23,6 +23,7 @@ public class Memorandum {
 	private int id_memo;
 	private String destinatario;
 	private String Asunto;
+	private String mensaje;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)
 	private Date fecha;

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Consulta de Memorandums</title>
+<link rel="stylesheet" th:href="@{resources/css/principal.css}" />
+<div th:replace="librerias::librerias" th:remove="tag"></div>
+</head>
+<body>
+
+<div class=""  th:replace="principal :: menu"> </div>
+ <header class="encabezado block" th:replace="principal :: headerPrin"> Header </header>
+ 
+ <div class="contenido">
+	<center>
+		<h1>Memorandums</h1>
+	</center>
+
+	<div class="mt-3">
+		<table id="example" class="table table-striped" style="width: 100%">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Emisor</th>
+					<th>Destinatario</th>
+					<th>Asunto</th>
+					<th>Fecha de emisión</th>
+						<th>Mensaje</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="m: ${lstMemo}">
+					<td th:text="${m.id_memo}"></td>
+					<td th:text="${m.objReqCas.objPerPue.nombre}"></td>
+					<td th:text="${m.destinatario}"></td>
+					<td th:text="${m.Asunto}"></td>
+					<td th:text="${m.fecha}"></td>
+						<td th:text="${m.mensaje}"></td>
+			
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
