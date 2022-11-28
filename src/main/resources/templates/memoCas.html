@@ -11,11 +11,18 @@
  	<header class="encabezado block" th:replace="principal :: headerPrin"> Header </header>
  	<div class="contenido" >
  		<div class="">
- 			<form th:action="@{/cargarMemoCas}" method="post"
-				th:object="${Memorandum}" id="formulario" class="form-row needs-validation" novalidate>
-				<div class="">
+			<form th:action="@{/memo/reporte}" method="post"
+				  th:object="${memorandum}" id="formulario"
+				  class="form-row needs-validation" novalidate>
+				<div class="form-floating mb-3">
+					<input th:field="${memorandum.fecha}" type="date" class="form-control" placeholder="fecha">
+					<label>Fecha</label>
 				</div>
- 			</form>
+				<br>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" >Consulta</button>
+				</div>
+			</form>
  		</div>
  	</div>
 </body>
