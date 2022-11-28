@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.reclutamiento.model.Empleado;
 import com.reclutamiento.model.repository.EmpleadoRepository;
@@ -49,10 +50,9 @@ public class EmpleadoController {
 	}
 	@PostMapping("/buscarEmpleado")
 	public String BuscarEmpleado(@ModelAttribute Empleado e, Model model) {
-		
 		model.addAttribute("empleado", eRepo.findById(e.getId_empleado()));
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		return "mantEmpleado";
+		return "redirect:/cargarEmpleado";
 	}
 	@PostMapping("/eliminarEmpleado")
 	public String EliminarEmpleado(@ModelAttribute Empleado e, Model model) {

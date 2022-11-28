@@ -1,4 +1,4 @@
-package com.reclutamiento.security.service;
+package com.reclutamiento.service;
 
 import java.util.List;
 
@@ -10,15 +10,16 @@ import com.reclutamiento.model.Usuario;
 import com.reclutamiento.model.repository.UsuarioRepository;
 
 @Service
-public class UserService{
+public class UsuarioService {
+	
 	@Autowired
 	private UsuarioRepository repo;
 	
-	public Usuario login(String email) {
-		return repo.iniciarSesion(email);
-	}
-	
-	public List<Operacion> modulosPorUsuario(int idRol){
-		return repo.traerOperaciones(idRol);
-	}
+	public Usuario login(String email, String clave) {
+	    return repo.iniciarSesion(email, clave);
+	  }
+	  
+	  public List<Operacion> modulosPorUsuario(int idRol){
+	    return repo.traerOperaciones(idRol);
+	  }
 }

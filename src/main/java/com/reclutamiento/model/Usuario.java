@@ -24,4 +24,9 @@ public class Usuario {
 	@ManyToOne
 	@JoinColumn(name = "id_Rol", insertable = false, updatable = false)
 	private Rol rol;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_uo", insertable = false, updatable = false)
+	private UnidadOrganica unidadorganica;
+	
 }
