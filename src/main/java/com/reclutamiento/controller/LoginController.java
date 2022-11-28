@@ -34,16 +34,15 @@ public class LoginController {
 	@PostMapping("/login")
 	public String loguiarse(@RequestParam(name = "username", required = false) String username,
 			@RequestParam(name = "password", required = false) String password, RedirectAttributes att, Model model) {
-		try {
+		
 			Usuario user = service.login(username, password);
-			model.addAttribute("USUARIO", user);
-			att.addAttribute("rol", user.getId_Rol());
-			return "redirect:/home";
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			return "redirect:/login?error";
-		}
-	
+			if(user != null) {
+				model.addAttribute("USUARIO", user);
+				att.addAttribute("rol", user.getId_Rol());
+				return "redirect:/home";
+			}else {
+				return "redirect:/login?error";
+			}
 	}
 
 	@RequestMapping(value = "/home", params = "rol")
