@@ -1,6 +1,10 @@
 package com.reclutamiento.controller;
 
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,16 +13,42 @@ import com.reclutamiento.model.Memorandum;
 import com.reclutamiento.model.repository.MemorandumRepository;
 import com.reclutamiento.model.repository.ReqCasRepository;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class MemorandumController {
-	@Autowired
-	private MemorandumRepository mmRepo;
-	@Autowired
-	private ReqCasRepository rcRepo;
-	
-	@GetMapping("/cargarMemoCas")
-	public String abrirMemoCas(Model model) {
-		model.addAttribute("memorandum", new Memorandum());
-		return "memoCas";
-	}
+    @Autowired
+    private MemorandumRepository mmRepo;
+    @Autowired
+    private ReqCasRepository rcRepo;
+    @Autowired
+    private ResourceLoader resourceLoader;
+    @Autowired
+    private DataSource dataSource;
+
+    @GetMapping("/cargarMemoCas")
+    public String abrirMemoCas(Model model) {
+        model.addAttribute("memorandum", new Memorandum());
+        return "memoCas";
+    }
+
+    @GetMapping("/memo/reporte")
+    public void reporte(HttpServletResponse response) {
+        response.setHeader("Content-Disposition", "inline;");
+        response.setContentType("application/pdf");
+        Map<String, Object> param = new HashMap<>();
+        try {
+            param.put("logoRoute", resourceLoader.getResource("classpath:static/reportes/img/MinisLogo.png").getURI().getPath());
+            String ru = resourceLoader.getResource("classpath:static/reportes/memorandum.jasper").getURI().getPath();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(ru, param, dataSource.getConnection());
+            OutputStream outStream = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
