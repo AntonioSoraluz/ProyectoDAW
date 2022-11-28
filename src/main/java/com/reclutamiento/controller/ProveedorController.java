@@ -49,11 +49,15 @@ public class ProveedorController {
 	
 	@PostMapping("/eliProveedor")
 	public String EliProveedor(@ModelAttribute Proveedor p, Model model) {
-		repProve.deleteById(p.getCod_Prov());
+		try {
+			repProve.deleteById(p.getCod_Prov());
+			model.addAttribute("mensaje", "Se elimino correctamente");
+			model.addAttribute("clase", "alert alert-success");
+		} catch (Exception e) {
+			model.addAttribute("mensaje", "Este registro tiene un vinculo en otra parte");
+			model.addAttribute("clase", "alert alert-danger");
+		}
 		model.addAttribute("lstProve", repProve.findAll());
-		return "redirect:/monstrarPagProveedor";
+		return "proveedoresLista";
 	}
-	
-	
-	
 }

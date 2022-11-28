@@ -53,6 +53,10 @@
 			</div>
 		</div>
 	</div>
-	<header class="encabezado block" th:fragment="headerPrin"> Header </header>
+	<header class="encabezado block" th:fragment="headerPrin">
+	<div class="px-4 py-2 bg-primary text-white fw-bold">CENTRO DE GESTIONAMIENTO DE OPERACIONES</div>
+	<div class="px-3 py-2 bg-warning text-black rounded-pill fw-bold" th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"></div>
+	</header>
+	
 </body>
 </html>

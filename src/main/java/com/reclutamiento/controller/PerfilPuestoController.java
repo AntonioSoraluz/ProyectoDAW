@@ -1,11 +1,14 @@
 package com.reclutamiento.controller;
 
 import java.io.OutputStream;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
@@ -47,18 +50,19 @@ public class PerfilPuestoController {
 	
 	@GetMapping("/cargarPerPue")
 	public String abrirPerfilPuesto(Model model) {
-		model.addAttribute("perfilPuesto", new PerfilPuesto());
+		model.addAttribute("perfilpuesto", new PerfilPuesto());
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 		/*model.addAttribute("pagina", "mantPerPue");
 		model.addAttribute("modulo", "regPerPue");*/
 		return "mantPerPue";
 	}
 	@PostMapping("/grabarPerPue")
-	public String grabarPerfilPuesto(@ModelAttribute PerfilPuesto perfilPuesto, Model model) {
+	public String grabarPerfilPuesto(@ModelAttribute PerfilPuesto perfilpuesto, Model model) {
 		try {
-			ppRepo.save(perfilPuesto);
+			ppRepo.save(perfilpuesto);
 			model.addAttribute("clase", "alert alert-success");
 			model.addAttribute("mensaje", "Perfil de Puesto registrado");
+			model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 		} catch (Exception e) {
 			model.addAttribute("clase", "alert alert-danger");
 			model.addAttribute("mensaje", "Error al registrar el Perfil de Puesto");
@@ -73,10 +77,17 @@ public class PerfilPuestoController {
 		return "mantPerPue";
 	}
 	@PostMapping("/eliminarPerfil")
-	public String eliminarPerfilP(@ModelAttribute PerfilPuesto p, Model model) {
-		ppRepo.deleteById(p.getClave_perfil());
+	public String eliminarPerfilP(@ModelAttribute PerfilPuesto p, Model model){
+		try {
+			ppRepo.deleteById(p.getClave_perfil());
+			model.addAttribute("mensaje", "Se elimino correctamente");
+			model.addAttribute("clase", "alert alert-success");
+		} catch (Exception e) {
+			model.addAttribute("mensaje", "Este registro tiene un vinculo en otra parte");
+			model.addAttribute("clase", "alert alert-danger");
+		}
 		model.addAttribute("lstPerPue", ppRepo.findAll());
-		return "redirect:/listarPerPue";
+		return "perfilesPuesto";
 	}
 	@GetMapping("/carConsPerPue")
 	public String cargarReportePerPue(Model model) {

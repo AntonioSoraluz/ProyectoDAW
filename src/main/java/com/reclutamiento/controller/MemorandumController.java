@@ -21,4 +21,16 @@ public class MemorandumController {
 		model.addAttribute("memorandum", new Memorandum());
 		return "memoCas";
 	}
+	
+	
+	@GetMapping("/memo")
+	public String mostrarPagMemorandums(Model model) {
+		model.addAttribute("lstMemo", mmRepo.findAll());
+		return "verMemorandums";
+	}
+	
+	
+	
+	
+	
 }
