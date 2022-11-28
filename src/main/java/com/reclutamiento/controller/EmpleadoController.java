@@ -52,7 +52,7 @@ public class EmpleadoController {
 	public String BuscarEmpleado(@ModelAttribute Empleado e, Model model) {
 		model.addAttribute("empleado", eRepo.findById(e.getId_empleado()));
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		return "redirect:/cargarEmpleado";
+		return "mantEmpleado";
 	}
 	@PostMapping("/eliminarEmpleado")
 	public String EliminarEmpleado(@ModelAttribute Empleado e, Model model) {
