@@ -8,13 +8,12 @@
 <div th:replace="librerias::librerias" th:remove="tag"></div>
 </head>
 <body>
- <!--<div class=""  th:fragment="empleado" >   --><div class=""  th:replace="principal :: menu"> </div>
- <header class="encabezado block" th:replace="principal :: headerPrin"> Header </header>
- 
-<div class="contenido" th:fragment="regPerPue">
-	<div class="">
-		<form th:action="@{/grabarPerPue}" method="post"
-			th:object="${perfilpuesto}" id="formulario"
+	<div class="" th:replace="principal :: menu"></div>
+	<header class="encabezado block" th:replace="principal :: headerPrin">
+		Header </header>
+
+	<div class="contenido">
+		<form th:action="@{/grabarPerPue}" th:object="${perfilPuesto}"  method="post" id="formulario"
 			class="form-row needs-validation" novalidate>
 			<fieldset class="form-group border p-3">
 				<legend class="col-form-label col-sm-2 pt-0">Encabezado</legend>
@@ -53,13 +52,6 @@
 				<br>
 				<div class="form-group">
 					<div class="form-row">
-						<label for="validationCustom03" class="form-label">Responde
-							a:</label>
-						<div class="col">
-							<!-- th:if="${u.id_uo}==${}" th:each="u: ${lstUnidadesOrganicas}"  
-										 th:text="${u.nom_jefe_uniOrg}" -->
-							<input type="text" readonly id="validationCustom03">
-						</div>
 						<div class="col">
 							<div class="form-row">
 								<label for="validationCustom04" class="form-label">Turno
@@ -158,7 +150,6 @@
 		<br>
 		<div th:class="${clase}" role="alert" th:text="${mensaje}"></div>
 	</div>
-</div>
-<script src="resources/js/mantValida.js"></script>
+	<script src="resources/js/mantValida.js"></script>
 </body>
 </html>
