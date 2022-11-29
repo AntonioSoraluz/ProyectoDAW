@@ -39,3 +39,5 @@ secrets.yml
 .sts4-cache
 HELP.md
 src/test/java
+.factorypath
+basedata/*
