@@ -38,8 +38,6 @@ public class EmpleadoController {
 	@GetMapping("/monstrarPagEmpleado")
 	public String mostrarPaginaEmpleado(Model model) {
 		model.addAttribute("lstEmp", eRepo.findAll());
-		/*model.addAttribute("pagina", "empleados");
-		model.addAttribute("modulo", "empleado");*/
 		return "empleados";
 	}
 	
@@ -47,8 +45,6 @@ public class EmpleadoController {
 	public String abrirEmpleado(Model model) {
 		model.addAttribute("empleado", new Empleado());
 		model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
-		/*model.addAttribute("pagina", "mantEmpleado");
-		model.addAttribute("modulo", "mantEmpleado");*/
 		return "mantEmpleado";
 	}
 	@PostMapping("/grabarEmpleado")
@@ -56,10 +52,11 @@ public class EmpleadoController {
 		try {
 			eRepo.save(empleado);
 			model.addAttribute("clase", "alert alert-success");
-			model.addAttribute("mensaje", "Empleado registrado");
+			model.addAttribute("mensaje", "La operacion fue un exito");
+			model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 		} catch (Exception e) {
 			model.addAttribute("clase", "alert alert-danger");
-			model.addAttribute("mensaje", "Error al registrar el Empleado");
+			model.addAttribute("mensaje", "Ocurrio un error en la operacion");
 			model.addAttribute("lstUnidadesOrganicas", uoRepo.findAll());
 		}
 		return "mantEmpleado";

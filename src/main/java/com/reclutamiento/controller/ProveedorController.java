@@ -32,11 +32,11 @@ public class ProveedorController {
 	public String grabarProveedor(@ModelAttribute Proveedor proveedor, Model model) {
 		try {
 			repProve.save(proveedor);
-			model.addAttribute("claseProve", "alert alert-success");
-			model.addAttribute("mensajeProve", "Proveedor registrado");
+			model.addAttribute("clase", "alert alert-success");
+			model.addAttribute("mensaje", "La operacion fue un exito");
 		} catch (Exception e) {
-			model.addAttribute("claseProve", "alert alert-danger");
-			model.addAttribute("mensajeProve", "Error al registrar el Proveedor");
+			model.addAttribute("clase", "alert alert-danger");
+			model.addAttribute("mensaje", "Ocurrio un error en la operacion");
 		}
 		return "mantProveedor";
 	}
